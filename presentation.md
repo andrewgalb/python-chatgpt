@@ -37,7 +37,7 @@ title: "Använda ChatGPT via API med Python"
 <!-- .slide: data-background="#dddddd" -->
 ## Vad är ett API?
 
- <img data-src="./api.png" alt="API image">
+ <img src="./api.png" alt="API image">
 
 
 ---
