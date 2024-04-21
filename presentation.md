@@ -46,7 +46,7 @@ title: "Använda ChatGPT via API med Python"
 ```python
 from openai import OpenAI
 
-client = OpenAI(api_key='sk-proj-iWwHBaOz4TRm9L71LP6ST3BlbkFJAhq9CgqogBM2PewSqd74')
+client = OpenAI(api_key='sk...')
 
 completion = client.chat.completions.create(
   model="gpt-3.5-turbo",
