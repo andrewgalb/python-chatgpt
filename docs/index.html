@@ -105,14 +105,13 @@
 <li>Du kan använda ChatGPT genom att gå till OpenAIs webbsida…</li>
 <li>…men även genom att skicka frågor och tar emot svar programmatiskt.</li>
 </ul>
- <img data-src="api.png" alt="Down arrow">
 
             </section>
         
             <section data-background="#dddddd">
                 <!-- .slide: data-background="#dddddd" -->
 <h2>Vad är ett API?</h2>
- <img data-src="api.png" alt="Down arrow">
+ <img data-src="./api.png" alt="API image">
             </section>
         
 
@@ -131,20 +130,6 @@
 <li>Ett API-anrop med Python kan se ut så här.</li>
 <li>Obs openai biblioteket måste installeras i Thonny.</li>
 </ul>
-<pre><code class="language-python">from openai import OpenAI
-
-client = OpenAI(api_key='sk...')
-
-completion = client.chat.completions.create(
-  model=&quot;gpt-3.5-turbo&quot;,
-  messages=[
-    {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a poetic assistant, skilled in explaining complex programming concepts with creative flair.&quot;},
-    {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Compose a poem that explains the concept of recursion in programming.&quot;}
-  ]
-)
-
-print(completion.choices[0].message.content)
-</code></pre>
 
             </section>
         

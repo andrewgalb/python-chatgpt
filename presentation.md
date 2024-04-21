@@ -32,15 +32,12 @@ title: "Använda ChatGPT via API med Python"
 - Du kan använda ChatGPT genom att gå till OpenAIs webbsida...
 - ...men även genom att skicka frågor och tar emot svar programmatiskt. 
 
- <img data-src="api.png" alt="Down arrow">
-
-
 --
 
 <!-- .slide: data-background="#dddddd" -->
 ## Vad är ett API?
 
- <img data-src="api.png" alt="Down arrow">
+ <img data-src="./api.png" alt="API image">
 
 
 ---
@@ -52,21 +49,7 @@ title: "Använda ChatGPT via API med Python"
 - Denna nyckeln är specifik till ett sammanhang, exempelvis en app eller program.
 - Ett API-anrop med Python kan se ut så här.
 - Obs openai biblioteket måste installeras i Thonny.
-```python
-from openai import OpenAI
 
-client = OpenAI(api_key='sk...')
-
-completion = client.chat.completions.create(
-  model="gpt-3.5-turbo",
-  messages=[
-    {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
-    {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
-  ]
-)
-
-print(completion.choices[0].message.content)
-```
 
 
 --
