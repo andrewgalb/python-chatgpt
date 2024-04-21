@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Reveal JS presentation</title>
+  <title>Använda ChatGPT via API med Python</title>
 
   <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
   <meta name="author" content="Hakim El Hattab">
@@ -37,7 +37,7 @@
 
   <!-- Revealjs Theme -->
   
-  <link rel="stylesheet" href="libs/reveal.js/4.3.1/theme/black.css" id="theme">
+  <link rel="stylesheet" href="libs/reveal.js/4.3.1/theme/night.css" id="theme">
   
   
 
@@ -71,39 +71,145 @@
     
         <section >
             
-            <h1>Programmeringsuppgifter med ChatGPT API</h1>
-<ol>
-<li>
-<p><strong>Skicka en enkel förfrågan:</strong> Skriv ett Python-program som skickar en enkel textförfrågan till ChatGPT API och skriver ut svaret. Använd en enkel fråga som “Vilken är huvudstaden i Sverige?”.</p>
-</li>
-<li>
-<p><strong>Ta emot användarinput:</strong> Modifiera ditt första program så att det kan ta emot en fråga från användaren via terminalen istället för en hårdkodad textsträng. Skicka denna fråga till ChatGPT och skriv ut svaret.</p>
-</li>
-<li>
-<p><strong>Loopa förfrågningar:</strong> Ändra ditt program så att användaren kan fortsätta ställa frågor tills de väljer att avsluta programmet. Använd en loop och ge användaren ett val att fortsätta eller avsluta efter varje svar.</p>
-</li>
-<li>
-<p><strong>Logga förfrågningar och svar:</strong> Skapa en enkel loggfunktion i ditt program som sparar varje ställd fråga och motsvarande svar i en textfil. Detta hjälper användaren att se en historik av vad som har frågats och svaren de fick.</p>
-</li>
-<li>
-<p><strong>Hantera långa texter:</strong> Skriv ett program som frågar användaren efter en längre text (t.ex. en kort berättelse eller en dagboksinlägg) och skickar den till ChatGPT för att få en summering eller feedback på texten.</p>
-</li>
-<li>
-<p><strong>Gör om frågor till kommandon:</strong> Låt användaren ge kommandon till programmet via text som “sluta”, “hjälp”, eller “visa logg”, och svara på dessa utan att kontakta API:t.</p>
-</li>
-<li>
-<p><strong>Begränsa svar från API:</strong> Modifiera programmet så att det begränsar antalet ord i svaren från API:t. Använd detta för att få kortare och mer koncisa svar som är lättare för användaren att läsa.</p>
-</li>
-<li>
-<p><strong>Visa datum och tid för varje svar:</strong> Lägg till funktionalitet i ditt program där det visar den aktuella datum och tid när ett svar mottas från API:t, så användaren kan se när informationen hämtades.</p>
-</li>
-<li>
-<p><strong>Enkel felhantering:</strong> Lägg till enkel felhantering i ditt program. Om API-förfrågan misslyckas, skriv ut ett vänligt felmeddelande till användaren istället för att programmet kraschar.</p>
-</li>
-<li>
-<p><strong>Eget program:</strong> Skriv ett eget program som använder ChatGPTs API. Här kan du använda egen fantasin -  exempelvis skulle det kunna vara ett program som är en s.k. Study Buddy som ställer frågor till dig om ett visst ämne och sedan rättar dina svar.</p>
-</li>
-</ol>
+            <h1>Använda ChatGPT via API med Python</h1>
+ <img width="238" height="238" data-src="chatgpt-logo.jpg" alt="Down arrow">
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2>Vad är ChatGPT?</h2>
+<ul>
+<li>AI utvecklad av OpenAI.</li>
+<li>ChatGPT är en s.k. Large Language Model</li>
+<li>Det finns även fler LLMs, exempelvis Gemini, Claude m.m.</li>
+<li>Kan generera text, svara på frågor, och mycket mer.</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+    <section>
+        <section data-background="#dddddd">
+            <!-- .slide: data-background="#dddddd" -->
+<h2>Vad är ett API?</h2>
+<ul>
+<li>API står för Application Programming Interface.</li>
+<li>Ett verktyg för program att kommunicera med varandra.</li>
+<li>Du kan använda ChatGPT genom att gå till OpenAIs webbsida…</li>
+<li>…men även genom att skicka frågor och tar emot svar programmatiskt.</li>
+</ul>
+ <img data-src="api.png" alt="Down arrow">
+
+            </section>
+        
+            <section data-background="#dddddd">
+                <!-- .slide: data-background="#dddddd" -->
+<h2>Vad är ett API?</h2>
+ <img data-src="api.png" alt="Down arrow">
+            </section>
+        
+
+    </section>
+    
+
+
+
+    
+    <section>
+        <section >
+            <h2>Hur ansluter man till ChatGPT via API?</h2>
+<ul>
+<li>För att använda API:n behövs en API nyckel.</li>
+<li>Denna nyckeln är specifik till ett sammanhang, exempelvis en app eller program.</li>
+<li>Ett API-anrop med Python kan se ut så här.</li>
+<li>Obs openai biblioteket måste installeras i Thonny.</li>
+</ul>
+<pre><code class="language-python">from openai import OpenAI
+
+client = OpenAI(api_key='sk...')
+
+completion = client.chat.completions.create(
+  model=&quot;gpt-3.5-turbo&quot;,
+  messages=[
+    {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a poetic assistant, skilled in explaining complex programming concepts with creative flair.&quot;},
+    {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Compose a poem that explains the concept of recursion in programming.&quot;}
+  ]
+)
+
+print(completion.choices[0].message.content)
+</code></pre>
+
+            </section>
+        
+            <section >
+                <h2>Hur ansluter man till ChatGPT via API?</h2>
+<pre><code class="language-python">from openai import OpenAI
+
+client = OpenAI(api_key='sk...')
+
+completion = client.chat.completions.create(
+  model=&quot;gpt-3.5-turbo&quot;,
+  messages=[
+    {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a poetic assistant, skilled in explaining complex programming concepts with creative flair.&quot;},
+    {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Compose a poem that explains the concept of recursion in programming.&quot;}
+  ]
+)
+
+print(completion.choices[0].message.content)
+</code></pre>
+
+            </section>
+        
+
+    </section>
+    
+
+
+
+    
+    <section>
+        <section >
+            <h2>Parametrar?</h2>
+<ul>
+<li>client.chat.completions.create() tar ett antal parametrar.</li>
+<li>“model” är versionen som ska användas (gpt-3.5-turbo)</li>
+<li>“messages” är de olika meddelanden som ChatGPT ska ta hänsyn till när den bildar ett svar.</li>
+<li>Vilket format har “messages”?</li>
+<li>För att fortsätta en chat måste både språkmodellens och dina meddelanden las till i “messages.”</li>
+</ul>
+
+            </section>
+        
+            <section >
+                <h2>Parametrar?</h2>
+<pre><code class="language-python">completion = client.chat.completions.create(
+  model=&quot;gpt-3.5-turbo&quot;,
+  messages=[
+    {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a poetic assistant, skilled in explaining complex programming concepts with creative flair.&quot;},
+    {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Compose a poem that explains the concept of recursion in programming.&quot;}
+  ]
+)
+</code></pre>
+
+            </section>
+        
+
+    </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2>Tack för idag!</h2>
 
             </section>
     
