@@ -60,6 +60,27 @@ print(completion.choices[0].message.content)
 ```
 
 
+--
+
+## Hur ansluter man till ChatGPT via API?
+
+```python
+from openai import OpenAI
+
+client = OpenAI(api_key='sk...')
+
+completion = client.chat.completions.create(
+  model="gpt-3.5-turbo",
+  messages=[
+    {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
+    {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
+  ]
+)
+
+print(completion.choices[0].message.content)
+```
+
+
 ---
 
 
@@ -69,6 +90,10 @@ print(completion.choices[0].message.content)
 - "messages" är de olika meddelanden som ChatGPT ska ta hänsyn till när den bildar ett svar.
 - Vilket format har "messages"?
 - För att fortsätta en chat måste både språkmodellens och dina meddelanden las till i "messages."
+
+--
+
+## Parametrar?
 
 ```python
 completion = client.chat.completions.create(
